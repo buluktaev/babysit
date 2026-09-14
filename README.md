@@ -4,6 +4,19 @@
 
 A planning head writes a behaviour contract and a task plan. An autonomous manager then runs every task through a worker and a clean-context reviewer until the contract rubric and the deterministic gates pass, and a final reviewer reads the whole diff once at the end. You stop the pipeline exactly once, to sign the contract.
 
+## Who it is for, and in what order it works
+
+This pipeline was built by a product designer, and its order follows how product work actually starts: an **idea**, then the **design**, then a **behaviour contract** written in states, texts and rules rather than classes and signatures, and only then the plan, the code and the review. The person at the centre is the one who knows what the product should do — not the one who knows how to type it.
+
+That single choice explains most of the design decisions here:
+
+- **The one stop is the contract, not the code.** What you sign is a description of behaviour you can read end to end and argue with. Nobody asks you to approve a diff.
+- **The decision gate asks product questions only.** A fork qualifies if code, docs and convention cannot settle it and no test would catch a wrong answer: wording, thresholds, what "empty" means, which control applies instantly. Technical shape — where a hook lives, which module orchestrates — is decided by the pipeline and recorded, not put to you.
+- **The design is a first-class source.** A dedicated scout proves every design node resolves before anyone builds against it, inventories the frames nobody asked about, and quotes texts verbatim — because a mockup nobody dereferenced sends an executor to invent one.
+- **The engineering rigour is not skipped, it is delegated.** Tests whose assertions must fail on a broken implementation, gates that must be green, a reviewer with a clean context, and a final pass over the whole diff. What a senior would check by reading, this checks by construction.
+
+You still need to know your product, your users and your own repository's conventions. You do not need to know how to write the mock factory.
+
 The principle that holds it together: **subagents get eyes and hands, never the head.** Facts come from the scout, code from the worker, verdicts from the reviewer against a written criterion. Decisions are made once, by the head, in the contract.
 
 ```mermaid
@@ -160,9 +173,9 @@ babysit-plugin/
 └── README.md
 ```
 
-## Lineage
+## Origin
 
-Extracted from the babysit pipeline used on the Menty project (Selecty), after a survey of comparable setups: the `fable-ruki-agenty` skill, LogRocket's agent harness, Dotzlaw's multi-agent pipelines, Cognition's and Anthropic's essays on multi-agent failure modes, and the spec-driven-development tools (Spec Kit, Kiro, OpenSpec). The mechanics were already at par; the extraction made the project seam explicit.
+Extracted from a pipeline that had been running on real features before it became a plugin, and checked against comparable multi-agent setups and the current crop of spec-driven-development tools. The mechanics were already at par; the extraction made one thing explicit that most of them leave implicit — the seam between the pipeline and the project it runs on. Everything project-specific was pushed out into a profile file, so the agents stay generic and nothing is silently stale in the next repository.
 
 ## License
 
