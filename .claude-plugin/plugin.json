@@ -1,0 +1,15 @@
+{
+  "name": "babysit",
+  "description": "Spec-to-branch feature pipeline: a planning head writes a contract and a task plan, an autonomous manager runs workers and a clean-context reviewer through every task, gates decide. Project-specific values live in the target repo's .claude/babysit.md, not in the plugin.",
+  "author": {
+    "name": "Selecty"
+  },
+  "keywords": [
+    "orchestration",
+    "subagents",
+    "spec-driven",
+    "tdd",
+    "review"
+  ],
+  "license": "MIT"
+}

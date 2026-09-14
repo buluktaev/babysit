@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "babysit",
+  "description": "Spec-to-branch feature pipeline for Claude Code",
+  "owner": {
+    "name": "Selecty"
+  },
+  "plugins": [
+    {
+      "name": "babysit",
+      "description": "A planning head writes a contract and a task plan; an autonomous manager runs every task through a worker and a clean-context reviewer, gates decide. Project values live in the target repo's .claude/babysit.md.",
+      "source": {
+        "source": "github",
+        "repo": "buluktaev/babysit"
+      }
+    }
+  ]
+}
