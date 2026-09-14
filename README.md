@@ -180,7 +180,3 @@ Extracted from a pipeline that had been running on real features before it becam
 ## License
 
 MIT — see [LICENSE](LICENSE).
-
----
-
-Русская версия — [README.ru.md](README.ru.md).

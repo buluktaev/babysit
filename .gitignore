@@ -1,1 +1,4 @@
 .DS_Store
+
+# Local working copies, never shipped
+README.local.md
