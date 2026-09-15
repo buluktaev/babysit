@@ -43,8 +43,30 @@ Print the run plan and start immediately — autonomously to the end, stop only 
 Loop: worker → `reviewer` (rubric + gates + `VERDICT:`) → APPROVED → next;
 NEEDS_REVISION → fixes, ≤3 rounds; BLOCKED / REJECTED / 3 rounds → escalation.
 
+## Visual acceptance — the owner's eyes, not a gate
+
+<Decide this per project and write the decision down. Silence is the worst of the three options:
+the pipeline then neither checks the layout nor admits that it does not.>
+
+Default: **the pipeline does not compare geometry to the design.** Neither the worker nor the
+reviewer measures heights, padding, radii, colours or shadows — that check needs a running stand per
+task and finds what the owner sees in a minute on a live screen. Three consequences, and they are
+the point of writing this down:
+
+- the worker builds from the frame as understood and **names in its report what it chose itself**
+  where the frame is silent — hover, open state, empty block. That list is what the owner looks at first;
+- the reviewer stays on texts, controls and the conditions under which buttons appear — "not pixels"
+  in its rubric is a rule, not a hedge;
+- a mismatch the owner finds is `nobody` in the fix journal, not `agent`. It is not a pipeline defect.
+
+The boundary that keeps this from becoming an excuse: it **is** a pipeline defect when the frame was
+in the kit **and** the mismatch is visible without a stand — the wrong kind of button, a missing
+section, the wrong text.
+
 ## E2E verification (after implementation <+ manual steps>)
 <A hands-on scenario: what to do and what to see (every channel/screen/role).>
+<Last step for a UI feature: open every state next to its frame and walk the workers'
+"Chosen, not specified" lists. This is the only place the layout is compared to the design.>
 
 ## What the worker does NOT do
 <An explicit list: manual steps, merges into the base branch, edits outside scope (e.g. the

@@ -22,6 +22,19 @@ One finished task (T#/#issue) handed over by the manager. The manager gives the 
 5. **Deterministic gate (run it yourself).** Commands — **only** from the **Gates** section of the feature's `agent-runbook.md`, from the directories it names. Any red for a reason **inside** the task → `NEEDS_REVISION`.
 6. **Changelog** (only if the project profile `.claude/babysit.md` requires one). The repo's changelog has an entry under `[Unreleased]` for this task, and it is a **decision** (what was chosen and why), not a file list. Missing or a diff retelling → `NEEDS_REVISION`.
 
+## What you do NOT review: the layout against the design
+
+Texts, the set of controls, and the conditions under which they appear — yes, those are task
+conformance. **Geometry is not yours:** heights, padding, radii, colours, shadows, hover fills.
+You have no stand, the diff does not show a rendered pixel, and an approval that implies you
+checked is worse than an honest silence — it tells the owner the layout was verified when nobody
+looked at it.
+
+The owner accepts the layout by eye (the runbook's "Visual acceptance" section says so in writing).
+Your part is to make that pass cheap: if the worker's report has a **"Chosen, not specified"**
+section, carry it into your report verbatim. A UI task whose report has no such section and whose
+frames clearly left states open — say that, as a note, not a verdict.
+
 ## Report and verdict
 **Write the full report to a file** at the path from the brief: every axis with grounds, the gate commands and their output. Return a digest to the manager and finish with **exactly one** line:
 ```

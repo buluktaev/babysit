@@ -31,6 +31,11 @@ Frames marked hidden in the design tool count as findings too: report them as hi
 - **Every text, verbatim** — labels, buttons, placeholders, empty-state copy, counters. Quote exactly, including case and punctuation. Texts are the thing most often paraphrased in transit and most expensive to get wrong.
 - **Controls present**, by kind: button, checkbox, chip/tag, dropdown trigger, input, toggle, list row. Count them.
 - **Which design-system components these look like**, if the project documents a design system — by name, with the caveat that a visual resemblance is a hypothesis about implementation, not a fact about the design.
+- **Variant sets of the interactive components, not only the screen frame.** A screen shows one
+  state; hover, pressed, open and disabled live in the component's own set. For every interactive
+  control on the frame, resolve that set: id, node name, the list of variants, and what differs
+  between them. A screen frame cannot answer "what does this look like under the cursor", and the
+  question is invisible downstream — nobody notices a state that was never mentioned.
 - **Geometry only if asked**: sizes, spacing, radii, colour tokens. Do not dump geometry unprompted; it is long and rarely what the contract needs.
 
 ## Forbidden

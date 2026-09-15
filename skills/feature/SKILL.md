@@ -150,7 +150,7 @@ Do not become the manager yourself — running the loop on the most expensive mo
 
 ### 8a. Record what you expect, before the run starts
 
-One short file at `<scratchpad>/prediction.md`, written **before** the manager is dispatched and never edited afterwards: which tasks you consider risky and why, how many second rounds you expect, what you think the final whole-diff review will find, and what would count as a surprise.
+One short file at `<scratchpad>/prediction.md`, written **before** the manager is dispatched and never edited afterwards: which tasks you consider risky and why, how many second rounds you expect, what you think the final whole-diff review will find, and what would count as a surprise. **For a UI feature, one line on what the layout risks** — which states the kit does not pin, where the worker will have to choose. Without it the comparison at step 10 is blind exactly where the day's work goes: measured on `search-filters`, eight of fourteen owner fixes were visual, and the prediction had not a word about the layout.
 
 The reason is not ceremony. Without an expectation fixed in advance, the post-run analysis becomes an explanation after the fact, in which every outcome looks like it was obvious — and the one thing that stays invisible is where **phase 1 itself** was weak. Comparing prediction to outcome is the only cheap way to learn whether the head that wrote the plan understands its own blind spots.
 

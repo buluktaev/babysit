@@ -37,6 +37,27 @@ Measured, first run of this pipeline: a task widened a shared chip primitive so 
 ## "Verify at execution" zones
 The plan marks them `⚠️ Verify at execution` — signatures/mocks/routes may have moved since the base branch. Check against the real file; a deviation solvable within the task — adapt and note it in the report, do not change the contract. A deviation that changes the contract — stop and report to the manager.
 
+## UI tasks: three checks a frame cannot show
+
+A mockup shows what a state looks like, never how it answers. Before the gate, on anything you rendered:
+
+- **The caption is part of the control.** A checkbox or radio with a label beside it toggles from the
+  label too — wrap them together. Copying the local pattern is not enough: the local pattern may be
+  the bug. (Measured, `search-filters` 2026-09-15: both places in the feature were wrong the same way,
+  because the second copied the first.)
+- **Focus is visible from the keyboard**, and the element is reachable by Tab at all.
+- **Hover exists wherever a click does — and nowhere else.** A hover fill on a row that does nothing
+  promises an action the row does not have.
+
+None of the three is visible in a design tool: it draws states, not hit areas. Nobody downstream
+checks them either — the reviewer reads texts and behaviour, and the owner's visual pass looks at
+what was drawn, not at what is clickable.
+
+**Anything the frame did not decide for you** — the hover fill, the open state, the empty block, a
+radius the kit never gave — goes into the report under **"Chosen, not specified"**: what you chose
+and from what you inferred it. That section is the first thing the owner reads at visual acceptance,
+and it is the difference between a choice and a silent guess.
+
 ## Gate before returning (mandatory)
 Commands — from the **Gates** section of the feature's `agent-runbook.md`, run from the directories it names. All green — otherwise fix, do not return. Run tests in single-run mode (the runbook says which command; never a watch mode — you will hang on it).
 
@@ -50,6 +71,6 @@ A dirty tree is worse than a red gate. The next task starts in the same working 
 
 ## Git and return
 - The branch comes from the manager's brief (the manager creates it). Worktrees — only if the profile allows. One commit per task, message from the plan (+ issue number suffix if the project tracks issues). **Never merge into the base branch.** Commit trailers exactly as the profile says — and nothing it forbids.
-- **Write the full report to a file** at the path from the brief. Return a **digest** to the manager: task (T#/#issue), **commit SHAs**, changed files (+ new shared components, if any), gate output (last lines), deviations of the plan from reality, and a separate section **"Noticed, not touched"** — adjacent problems outside the task's scope (what / where `file:line` / why it matters), **without fixing them**.
+- **Write the full report to a file** at the path from the brief. Return a **digest** to the manager: task (T#/#issue), **commit SHAs**, changed files (+ new shared components, if any), gate output (last lines), deviations of the plan from reality, the **"Chosen, not specified"** section for UI tasks (see above), and a separate section **"Noticed, not touched"** — adjacent problems outside the task's scope (what / where `file:line` / why it matters), **without fixing them**.
 - **Revision round** (the brief contains the reviewer's fix list and the path to the previous round's report): first read that report — what was already done and why; fix strictly by the list on top of the existing commits, do not widen scope, write the report to the new file from the brief.
 - **Round 3 is different, and the brief will say so.** It carries the reviewer's **diagnosis** rather than a fix list, the approaches already tried, and permission you did not have before: you may **revert this task's own commits and implement it differently, from the contract**. Two rounds of patching have already failed, so continuing to patch is the least likely thing to work — and the ban on changing approach is often what trapped them. Read the contract as the target, and the previous rounds only as a list of what does not work. State in your report which route you took, keeping or reverting, and why. Revert with a revert commit, never a hard reset: nothing may be lost. If you conclude the task cannot satisfy the contract as written, say that instead of shipping a fourth patch — there is no round 4, and an honest stop beats a green gate on the wrong thing.
