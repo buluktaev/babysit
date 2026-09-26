@@ -9,10 +9,7 @@
     {
       "name": "babysit",
       "description": "Built for product owners and designers: you sign a behaviour contract written in states and texts, and an autonomous manager runs every task through a worker and a clean-context reviewer until the gates pass. Project values live in the target repo's .claude/babysit.md.",
-      "source": {
-        "source": "github",
-        "repo": "buluktaev/babysit"
-      }
+      "source": "./"
     }
   ]
 }

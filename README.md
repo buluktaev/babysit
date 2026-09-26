@@ -52,7 +52,14 @@ Phase 1 ends with a contract and a question. Answer it, and the run goes to the 
 
 ## Install as a plugin
 
-This repository is its own marketplace: `.claude-plugin/marketplace.json` sits next to `.claude-plugin/plugin.json`. Publish the repository, put its slug into the `repo` field of the marketplace manifest, then:
+This repository is its own marketplace: `.claude-plugin/marketplace.json` sits next to `.claude-plugin/plugin.json`, and the plugin entry's `source` is the relative path `"./"`. Claude Code resolves it against its local copy of the marketplace, so the same manifest works whether the marketplace is added from GitHub or from a local checkout. From a local checkout:
+
+```bash
+claude plugin marketplace add /path/to/babysit-plugin
+claude plugin install babysit@babysit
+```
+
+From GitHub, once the repository is published:
 
 ```bash
 /plugin marketplace add buluktaev/babysit
