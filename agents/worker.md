@@ -43,7 +43,7 @@ A mockup shows what a state looks like, never how it answers. Before the gate, o
 
 - **The caption is part of the control.** A checkbox or radio with a label beside it toggles from the
   label too — wrap them together. Copying the local pattern is not enough: the local pattern may be
-  the bug. (Measured, `search-filters` 2026-09-15: both places in the feature were wrong the same way,
+  the bug. (Measured, production project: both places in the feature were wrong the same way,
   because the second copied the first.)
 - **Focus is visible from the keyboard**, and the element is reachable by Tab at all.
 - **Hover exists wherever a click does — and nowhere else.** A hover fill on a row that does nothing

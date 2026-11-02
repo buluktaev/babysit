@@ -51,7 +51,7 @@ One row per interactive component of the feature; ids resolved by `design-scout`
 |---|---|---|---|
 | <dropdown trigger> | `<id>` "<name>" | default / hover / open × selected | <background token, chevron direction, counter colour> |
 
-<Measured, `search-filters` 2026-09-15: three of the four pipeline-caused fixes of that day were
+<Measured, production project: three of the four pipeline-caused fixes of one day were
 states that exist only in a variant set — hover on a list row, the open state of a trigger, the
 counter colour of a selected chip. The worker could not have built them from the kit: it listed
 screen frames only, and none of those states appears on a screen frame. This table is the fix.>

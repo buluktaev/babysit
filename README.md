@@ -45,7 +45,7 @@ claude --plugin-dir /path/to/babysit-plugin
 #    it goes to .claude/babysit.md in your project root
 
 # 3. start a feature
-/babysit:feature add filters to the mentor catalogue
+/babysit:feature add filters to the product catalogue
 ```
 
 Phase 1 ends with a contract and a question. Answer it, and the run goes to the end on its own.
