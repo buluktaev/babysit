@@ -62,7 +62,10 @@ Deliberately **not** a new template: `task.md` is those sections of the template
 ## Phase 1. The kit (head + scouts)
 
 ### 1. Reconnaissance by scouts, in parallel
-Spawn 2–4 `babysit:scout` agents in one message, each with a concrete question and a report path `<scratchpad>/reports/scout-<topic>.md`. Typical questions: how the integration point works today (signatures, constructors, DTOs — verbatim); every place the affected concept appears; what the design system already has for the needed elements; what the docs say about the behaviour. To a scout — "find / list / quote", never "suggest / choose".
+Spawn 2–4 `babysit:scout` agents in one message, each with a concrete question and a report path `<scratchpad>/reports/scout-<topic>.md`. Typical questions: how the integration point works today (signatures, constructors, DTOs — verbatim); every place the affected concept appears; what the design system already has for the needed elements; what the docs say about the behaviour; **what already exists and must be reused** — pagination, error display, loading / empty / error state components, owner or profile lookup, validation — each with `file:line` and its call count. To a scout — "find / list / quote", never "suggest / choose".
+
+**The reuse inventory is asked on every feature, not when duplication is suspected.** A shared function found at planning costs one pointer in a task; found at the final review, it costs a fix task; never found, it costs a fresh copy every feature. The plan points at what the inventory found (see the plan template).
+Measured, production project: one profile lookup copied eleven times, three pagination strategies, two API styles side by side.
 
 **Branch first.** The scout must check `git branch --show-current` and take facts from the base branch if the working copy is on another one (do not touch the user's running dev stand). If the feature depends on an unmerged branch — check against it, record its merge as a **precondition** in the runbook and mark such places `⚠️ Verify at execution`.
 

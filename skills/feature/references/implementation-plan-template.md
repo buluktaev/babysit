@@ -44,6 +44,11 @@
   check. Criterion for the latter: the description needs a paragraph → give code; "as in `X`,
   fields from §2" suffices → no code. Everything that is code in the plan is verified against the
   real files of the base branch, not from memory.
+- **Reuse what step 1 found.** Where the scouts' reuse inventory lists a shared function for the job
+  (pagination, error display, state components, owner lookup, validation), the task's implementation
+  pointer names it with `file:line`. Writing a new one where an inventoried one exists is a **head**
+  decision in §8 of the contract, with the reason the existing one does not fit — otherwise the worker
+  writes the eleventh copy in good faith.
 - **Risk zones**: a place where the base branch may move before execution (signature, mock,
   route) — mark with a block quote `> ⚠️ Verify at execution: <what>`. The worker adapts and notes
   it in the report; the contract is not changed.

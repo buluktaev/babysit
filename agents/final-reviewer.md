@@ -17,7 +17,7 @@ You are also the only point in the pipeline where the model that wrote the contr
 
 1. **Incoherence across tasks** — two or more changes that each satisfy the contract alone but disagree with each other, or that together make a worse whole than either implies.
 2. **The contract asked for the wrong thing, and only the finished code makes it visible.** A faithfully implemented bad instruction is still a defect on the branch. **The contract is the subject of this review, not its standard** — you are the only reviewer with that licence, so use it.
-3. **Duplication introduced across tasks** — two places doing one job because two tasks arrived at it separately.
+3. **Duplication introduced across tasks** — two places doing one job because two tasks arrived at it separately, or a task that rewrote a shared function the codebase already had. The main defence against this is now upstream: phase 1 inventories what must be reused, and the plan points tasks at it. What reaches you is what that inventory missed — name it as such, so the gap gets fixed in the inventory, not only on this branch.
 4. **Dead or orphaned code created by the sequence** — something an early change introduced that a later change made pointless. Include the case where the code is dead but its tests and comments still assert the removed behaviour: a green test plus a wrong comment costs more than dead code, because the next reader believes the test.
 5. **Abandoned scaffolding** — a placeholder or stub an early task left for a later task to replace, and nobody replaced.
 
