@@ -103,7 +103,7 @@ three migrations within one day.>
 
 ## 5. Standing dimensions (mandatory sweep)
 
-<Every feature answers all six, whatever it is about. A dimension is closed either by a corner
+<Every feature answers all seven, whatever it is about. A dimension is closed either by a corner
 case in §6 or by an explicit dismissal that states its reason. **A blank row is not allowed.**
 Absence is the one defect class nothing downstream can catch: the reviewer checks coverage of
 the corner cases that exist, and a case nobody wrote is invisible to every gate.>
@@ -116,6 +116,11 @@ the corner cases that exist, and a case nobody wrote is invisible to every gate.
 | D4 | Empty | Nothing matches the current conditions, versus nothing exists at all. Two different screens with two different messages — decide both. | CC# / n/a: … |
 | D5 | Boundary values | Zero, one, the maximum, both sides of every bucket edge, an empty string versus an absent parameter, the longest allowed input. | CC# / n/a: … |
 | D6 | Repetition and concurrency | Double click, retry, two actors on one entity, a stale response arriving after a newer one. | CC# / n/a: … |
+| D7 | Entry points | A person may arrive anywhere but the home screen. A direct link or a notification; not signed in, and returned to the target after sign-in; signed in under another active role, or without enough rights; the target object deleted, archived or unpublished; an old address after a rename. What does each of them see? | CC# / n/a: … |
+
+<Measured, production project (D7): after sign-in the link the person came from was lost; the central
+entity had no address of its own; the screen map was spread over seven lists in code, and a new
+screen was left out of one of them.>
 
 <**Rule for inherited rules.** When a parameter, a validation or a limit moves to a different
 endpoint, scope or caller, **re-derive it from the new scenario — never inherit it**. A rule that
@@ -151,4 +156,6 @@ A promoted entry stays here as a one-line pointer, not a copy — two copies of 
 
 ## 9. Out of scope for R1
 <An explicit list of what is deferred — otherwise the worker will "finish" it.>
+<A deferred second variant of a key concept (step 1a) is listed here with the data it will need —
+already present in §4 — so the next feature extends the model instead of reshaping it.>
 ```

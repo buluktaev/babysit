@@ -20,7 +20,7 @@ Run at step 7 of the `feature` skill. Any ❌ → the kit is reworked before it 
 - [ ] Task dependencies are expressed through Interfaces (Produces/Consumes); execution order is unambiguous
 
 ## Traceability and boundaries
-- [ ] §5 standing dimensions: all six rows filled — each closed by a CC number or by a dismissal that states its reason. A blank row, a bare "n/a" or a "—" fails this item
+- [ ] §5 standing dimensions: all seven rows filled — each closed by a CC number or by a dismissal that states its reason. A blank row, a bare "n/a" or a "—" fails this item
 - [ ] §4 model delta: present when the feature touches an entity, property, relation, dictionary or status, otherwise `n/a: <reason>`. Every computed relation states why it is not stored; every transition names its guard, the code an invalid one returns, and a test that fails if the guard is removed — and some task in the plan owns that test
 - [ ] UI features: every interactive component of the feature has its **variant set** listed — node id, variants, what differs between them — not only the screen frames it appears on. Hover, open and disabled states exist nowhere else, and a worker cannot build a state the kit never mentions
 - [ ] Self-review: every CC is covered by a task or explicitly deferred (§9)
