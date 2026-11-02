@@ -5,3 +5,10 @@ README.local.md
 
 # Eval run artifacts
 evals/results/
+
+# Local tool state: worktrees, caches, review verdicts, chat history
+.claude/worktrees/
+.claude/sdd-cache/
+.claude/.simplify-ignore-cache/
+.claude/review-verdict.json
+.specstory/
