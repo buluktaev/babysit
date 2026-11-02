@@ -1,0 +1,20 @@
+schema_version: "1.0"
+name: 04-small-task-decision-gate-quality
+runs: 3
+context:
+  scaffold_script: scaffold.sh
+execution:
+  model: sonnet
+  max_turns: 15
+  timeout_seconds: 300
+  allowed_tools: [Skill, Agent, AskUserQuestion, Write, Read, Glob, Grep]
+  prompt: |
+    Run babysit on this task.
+
+    This is the working copy of a React app. The project profile is at `.claude/babysit.md` and the code is on disk — read whatever you need, including `CLAUDE.md`.
+
+    The task: add a "clear all filters" link to the top of the filter panel, wired to the existing reset helper.
+
+    Use the feature slug `clear-all-filters`.
+
+    Ask me whatever you genuinely need before writing the kit.

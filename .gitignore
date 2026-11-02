@@ -2,3 +2,6 @@
 
 # Local working copies, never shipped
 README.local.md
+
+# Eval run artifacts
+evals/results/

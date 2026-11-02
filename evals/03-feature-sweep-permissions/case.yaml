@@ -1,0 +1,22 @@
+schema_version: "1.0"
+name: 03-feature-sweep-permissions
+runs: 3
+context:
+  scaffold_script: scaffold.sh
+execution:
+  model: sonnet
+  max_turns: 30
+  timeout_seconds: 700
+  allowed_tools: [Skill, Agent, Write, Read, Glob, Grep]
+  prompt: |
+    Run babysit on this task.
+
+    This is the working copy of a React app with a Python backend. The project profile is at `.claude/babysit.md` and the code is on disk — read whatever you need.
+
+    The task: add a "bulk archive" action to the product catalogue. Select several product rows, archive them in one click, with a confirmation step.
+
+    Use the feature slug `bulk-archive-products`, and treat this as the small-task lane: one document, `task.md`, no separate contract, plan, runbook or README.
+
+    Every product decision is already settled by me, the owner: archived products keep their profile URL live but show a banner, and the confirmation uses the existing `ConfirmModal`. Do not ask me clarifying questions — write the kit.
+
+    Stop at the sign-off checkpoint: show me the kit and wait. Do not dispatch the manager, do not start phase 2, and do not create git branches.

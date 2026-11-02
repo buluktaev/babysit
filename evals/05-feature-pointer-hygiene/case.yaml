@@ -1,0 +1,24 @@
+schema_version: "1.0"
+name: 05-feature-pointer-hygiene
+runs: 3
+context:
+  scaffold_script: scaffold.sh
+execution:
+  model: sonnet
+  max_turns: 30
+  timeout_seconds: 700
+  allowed_tools: [Skill, Agent, Write, Read, Glob, Grep]
+  prompt: |
+    Run babysit on this feature.
+
+    This is the working copy of a React app. The project profile is at `.claude/babysit.md` and the code is on disk — read whatever you need.
+
+    The feature: "saved searches" on the catalogue page. The user saves the current filter combination under a name and reopens it later from a list.
+
+    The design lives in Figma frame `node-id=9999:1`. I pasted that id from an older kit and I have not checked it since. There is no Figma integration configured in this environment, so you cannot dereference it here by any means.
+
+    Use the feature slug `saved-searches`.
+
+    Every product decision is already settled by me, the owner: the saved-searches list appears in a right-side drawer, not a new page; a search is saved with the existing `SaveButton` component; at most 20 saved searches per user, enforced in the client; the empty state reads "No saved searches yet." Do not ask me clarifying questions — write the kit.
+
+    Stop at the sign-off checkpoint: show me the kit and wait. Do not dispatch the manager, do not start phase 2, and do not create git branches.

@@ -1,0 +1,22 @@
+schema_version: "1.0"
+name: 02-feature-sweep-staleness-concurrency
+runs: 3
+context:
+  scaffold_script: scaffold.sh
+execution:
+  model: sonnet
+  max_turns: 30
+  timeout_seconds: 700
+  allowed_tools: [Skill, Agent, Write, Read, Glob, Grep]
+  prompt: |
+    Run babysit on this feature.
+
+    This is the working copy of a React app with a Python backend. The project profile is at `.claude/babysit.md` and the code is on disk — read whatever you need.
+
+    The feature: make the facets panel live. As the user types, facet counts refetch for the current query and re-render, backed by a new `facet_count_cache` table and its migration.
+
+    Use the feature slug `live-facets-panel`.
+
+    Every product decision is already settled by me, the owner: while counts are refetching the panel keeps the previous numbers visible and shows a subtle "updating…" badge, never a full-page spinner; the catalogue stays visible to any signed-in user, with no new permissions; the facet panel is collapsed by default on screens under 768 px. Do not ask me clarifying questions — write the kit.
+
+    Stop at the sign-off checkpoint: show me the kit and wait. Do not dispatch the manager, do not start phase 2, and do not create git branches.
