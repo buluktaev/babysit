@@ -25,9 +25,18 @@
 <**Test** is always mandatory and **must be able to fail**: break the described behaviour mentally
 and confirm that exactly this check would notice. A green check on broken logic is worse than
 no check — it lies to the reviewer.>
+<**Backend** names every error the behaviour can produce, by code, split in two: **universal** —
+what any method may return (unauthenticated, forbidden, not found, validation, conflict) — and
+**method-specific** — what only this call returns, such as an invalid state transition. Codes come
+from the profile's `Error dictionary`; a new code is listed in §2 with its client text. Profile
+says `none` → every code of the feature is listed in §2. An error designed after the code is an
+error the screen does not know how to show.
+Measured, production project: 13 codes in the dictionary against 101 thrown exceptions; on a
+failed load a screen showed "empty" or spun forever; four distinct server refusals collapsed into
+one screen; a value configured on the server was hard-coded as text on the client.>
 
 ## 2. Matrix (overview — the source of truth for values)
-<A table of all states/types: exact texts, roles, paths. The plan references this, it does not duplicate it.>
+<A table of all states/types: exact texts, roles, paths, error codes with their client texts. The plan references this, it does not duplicate it.>
 
 ## 3. State cards <UI features only; backend features skip this section>
 <Every design node id here was resolved by `design-scout` in this session — see the pointer rule in
@@ -37,7 +46,7 @@ like this state is a finding, not a match.>
 - **Entry:** <under which ownership/status it is shown>
 - **Frontend:** <navigation, distinguishing content>
 - **Data (API):** <what is needed from the backend>
-- **Backend:** <endpoints, checks, codes>
+- **Backend:** <endpoints, checks, error codes — universal and method-specific>
 - **Actions:** <clicks and where they lead>
 - **Test:** <minimal check>
 

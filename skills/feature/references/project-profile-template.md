@@ -25,6 +25,9 @@ One row per repository the pipeline may touch. Phase order in a multi-repo featu
 - Interview skill: `<skill name>` | `none` — a skill invoked at the decision gate instead of the built-in question round. `none` → the built-in gate.
 - Glossary: `<path>` | `none` — the project's own term list. **Update it in place, in whatever shape it already has.** The plugin imposes no format: a project with an existing glossary must not grow a second one.
 - Decision journal: `<path>` | `none` — where decisions that outlive a feature go, plus its **shape**: one file per decision, or a single journal; the numbering rule; the section schema. Copy the shape from what is already there.
+- Error dictionary: `<server path to error codes> → <client path to their texts>` | `none` — read by the reviewer. Errors designed together with functions, not collected after: every error that can reach the UI has a code, every code has a client text. `none` → the contract lists the feature's codes in §2, and the reviewer checks them for consistency inside the feature only.
+- Registries: `<what gets registered> → <every place it must be registered>`, one line each (e.g. "new screen → router, navigation, titles, notification targets") | `none` — read by the reviewer, which checks that a new object of that kind appears in every place. A list nobody wrote down is a list someone forgets one entry of. `none` → the check is skipped, and the reviewer says so in one line.
+- API conventions: `<path>` | `none` — the project's rules for endpoints: verbs for state transitions, response codes, pagination, naming of "my" resources. Read by the reviewer against every new endpoint. If those rules already live in a repository's `CLAUDE.md`, point at it rather than copying them. `none` → the check is skipped, and the reviewer says so in one line.
 
 ## Tracker
 - Kind: `gitlab` | `github` | `none`

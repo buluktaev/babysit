@@ -125,7 +125,7 @@ Everything project-specific lives in `.claude/babysit.md`. The plugin holds mech
 |---|---|
 | Repositories | Paths, base branches, gate commands, single-run test command. Row order = phase order |
 | Layout | Where kits, the features index, the side-findings register and both logs live |
-| Durable knowledge | Interview skill for the decision gate, glossary, decision journal and its shape |
+| Durable knowledge | Interview skill for the decision gate, glossary, decision journal and its shape; error dictionary, registries, API conventions — what the reviewer checks the system model against |
 | Tracker | Kind, CLI, projects, verbs. A journal, never the carrier of the contract |
 | Policies | Branch prefix, worktrees, commit trailers, changelog, final review on or off, the dev stand never to kill |
 | Terminology | Names that differ between code and storage, and where the canonical mapping lives |
