@@ -170,6 +170,7 @@ babysit-plugin/
 │   └── design-scout.md
 ├── skills/feature/
 │   ├── SKILL.md
+│   ├── HISTORY.md
 │   └── references/
 │       ├── project-profile-template.md
 │       ├── contract-template.md

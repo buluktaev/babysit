@@ -21,6 +21,10 @@ One finished task (T#/#issue) handed over by the manager. The manager gives the 
 4. **Feature integrity.** Corner cases CC# relevant to the task: the implementation's behaviour matches the card (Input/Behaviour/Test).
 5. **Deterministic gate (run it yourself).** Commands — **only** from the **Gates** section of the feature's `agent-runbook.md`, from the directories it names. Any red for a reason **inside** the task → `NEEDS_REVISION`.
 6. **Changelog** (only if the project profile `.claude/babysit.md` requires one). The repo's changelog has an entry under `[Unreleased]` for this task, and it is a **decision** (what was chosen and why), not a file list. Missing or a diff retelling → `NEEDS_REVISION`.
+7. **System model.** Check every item that the task's diff touches. For an item the diff does not touch, write one line naming the item and saying it is not touched. A defect here passes every other axis — the tests are green and the screen renders — and it surfaces months later as data that silently goes missing.
+   - **§4 of the contract is what the code does.** Every property, relation and transition the task implements matches its row: type, storage, cardinality, delete behaviour, guard. A relation that §4 says is stored but the code computes is ❌, and so is the reverse.
+   - **Every transition has a test that hits the invalid case** — a call from a state the guard forbids, asserting the error code from §4. A test that walks only the allowed path passes with the guard deleted.
+   - **No dictionary copy.** Where §4 types a property as a reference to a dictionary, the code stores the reference, never a copied label string.
 
 ## What you do NOT review: the layout against the design
 

@@ -56,6 +56,51 @@ states that exist only in a variant set — hover on a list row, the open state 
 counter colour of a selected chip. The worker could not have built them from the kit: it listed
 screen frames only, and none of those states appears on a screen frame. This table is the fix.>
 
+## 4. Model delta <mandatory when the feature adds or changes an entity, a property, a relation, a dictionary or a status; otherwise one line `n/a: <reason>`>
+
+<The change this feature makes to the system model, designed before code. Without it the model
+exists only as whatever the code happens to do, the project's docs describe that code after the
+fact, and every gap between the two becomes a defect nobody designed. Describe only the delta, not
+the whole model; drop a table the feature does not touch.>
+
+**Properties**
+| Entity.property | Type | Source of truth | Stored where | Required |
+|---|---|---|---|---|
+| <entity.property> | scalar / reference to <entity> / dictionary-enum <name> / derived from <what> | <the one place this value is authored> | server / client / both / external system <which> | yes / no |
+
+<A value that comes from a dictionary is a **reference** to it, never a copy of its label: the
+copy survives a rename of the dictionary entry and quietly stops matching anything. One property,
+one source of truth; "both" in Stored where names which side wins on conflict.
+Measured, production project: a profile stored dictionary labels as plain strings instead of
+references; renaming one dictionary entry broke the filter built on it.>
+
+**Relations**
+| From → to | Cardinality | Direction and dependency | On delete of each side | Stored explicitly or computed |
+|---|---|---|---|---|
+| <A → B> | 1:1 / 1:N / M:N | <who owns whom; can B exist without A> | <A deleted → …; B deleted → …> | FK / field <name> · computed from <what>, because <reason> |
+
+<A relation is part of the model: cardinality, direction and delete behaviour are decided here,
+not discovered in a cascade. A **computed** relation (derived from another record instead of
+stored) needs a stated reason — it breaks the moment the record it is computed from changes or
+disappears.
+Measured, production project: a reservation had no owner field and took it from its first
+time slot; a cascading delete of slots made reservations lose their owner and silently vanish from
+lists. The request a reservation came from held no link to it, and notifications stored ids
+without a foreign key and without the cause they were sent for.>
+
+**Transitions**
+| Entity | From → to | Who or what moves it | Guard (what is checked) | Invalid transition answers | Test that fails if the guard is removed |
+|---|---|---|---|---|---|
+| <entity> | <state> → <state> | <role / job / event> | <source state, ownership, …> | <error code> | <scenario> |
+
+<Every state and every allowed transition of each touched entity is listed before code; a pair not
+listed is forbidden, and the guard is what makes "forbidden" true at runtime. The test column is
+not optional: a guard without a test that hits the invalid case is a guard the next refactor
+removes unnoticed.
+Measured, production project: only one of three core entities had an explicit lifecycle; approve
+and reject of a profile did not check the source state, and another entity's statuses arrived in
+three migrations within one day.>
+
 ## 5. Standing dimensions (mandatory sweep)
 
 <Every feature answers all six, whatever it is about. A dimension is closed either by a corner
